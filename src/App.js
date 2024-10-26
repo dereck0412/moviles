@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+//import { StatusBar } from "expo-status-bar";
+import { Image, StyleSheet, Text, View } from "react-native";
 
-function App() {
+
+const Stack = createNativeStackNavigator();
+const Tab= createBottomTabNavigator();
+
+const HomeScreen=()=>{
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <View>
+      <Text>HomeScreen </Text>
+    </View>
+  )
+}
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Tab.Navigator>
+      <Tab.Screen name="Home" component={HomeScreen} />
+      {/*<Tab.Screen name="Map" component={MapScreen} />
+      <Tab.Screen name="Saved" component={SavedScreen} />
+      <Tab.Screen name="Settings" component={SettingsScreen} />*/}
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
 
-export default App;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  footerIcon: {
+    width: 25
+  }
+});
